@@ -73,36 +73,8 @@
         <div id="result" class="result"></div>
     </div>
 
-    <script>
-        function convertPolarToRectangular() {
-            const r = parseFloat(document.getElementById('polar-r').value);
-            const theta = parseFloat(document.getElementById('polar-theta').value);
-
-            if (isNaN(r) || isNaN(theta)) {
-                document.getElementById('result').textContent = 'Por favor, ingrese valores válidos para r y θ.';
-                return;
-            }
-
-            const x = r * Math.cos(theta);
-            const y = r * Math.sin(theta);
-
-            document.getElementById('result').textContent = `Las coordenadas rectangulares son: (x: ${x.toFixed(2)}, y: ${y.toFixed(2)})`;
-        }
-
-        function convertRectangularToPolar() {
-            const x = parseFloat(document.getElementById('rect-x').value);
-            const y = parseFloat(document.getElementById('rect-y').value);
-
-            if (isNaN(x) || isNaN(y)) {
-                document.getElementById('result').textContent = 'Por favor, ingrese valores válidos para x y y.';
-                return;
-            }
-
-            const r = Math.sqrt(x * x + y * y);
-            const theta = Math.atan2(y, x);
-
-            document.getElementById('result').textContent = `Las coordenadas polares son: (r: ${r.toFixed(2)}, θ: ${theta.toFixed(2)} radianes)`;
-        }
+    <script = coordenadas.js ;>
+       
     </script>
 </body>
 </html>
