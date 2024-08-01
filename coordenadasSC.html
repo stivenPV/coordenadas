@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión de Coordenadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversión de Coordenadas</h1>
+        <div>
+            <h2>Convertir de Coordenadas Polares a Rectangulares</h2>
+            <label for="polar-r">r (distancia al origen):</label>
+            <input type="text" id="polar-r" placeholder="Ingrese r">
+            <label for="polar-theta">θ (ángulo en radianes):</label>
+            <input type="text" id="polar-theta" placeholder="Ingrese θ">
+            <button onclick="convertPolarToRectangular()">Convertir</button>
+        </div>
+        <div>
+            <h2>Convertir de Coordenadas Rectangulares a Polares</h2>
+            <label for="rect-x">x:</label>
+            <input type="text" id="rect-x" placeholder="Ingrese x">
+            <label for="rect-y">y:</label>
+            <input type="text" id="rect-y" placeholder="Ingrese y">
+            <button onclick="convertRectangularToPolar()">Convertir</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function convertPolarToRectangular() {
+            const r = parseFloat(document.getElementById('polar-r').value);
+            const theta = parseFloat(document.getElementById('polar-theta').value);
+
+            if (isNaN(r) || isNaN(theta)) {
+                document.getElementById('result').textContent = 'Por favor, ingrese valores válidos para r y θ.';
+                return;
+            }
+
+            const x = r * Math.cos(theta);
+            const y = r * Math.sin(theta);
+
+            document.getElementById('result').textContent = `Las coordenadas rectangulares son: (x: ${x.toFixed(2)}, y: ${y.toFixed(2)})`;
+        }
+
+        function convertRectangularToPolar() {
+            const x = parseFloat(document.getElementById('rect-x').value);
+            const y = parseFloat(document.getElementById('rect-y').value);
+
+            if (isNaN(x) || isNaN(y)) {
+                document.getElementById('result').textContent = 'Por favor, ingrese valores válidos para x y y.';
+                return;
+            }
+
+            const r = Math.sqrt(x * x + y * y);
+            const theta = Math.atan2(y, x);
+
+            document.getElementById('result').textContent = `Las coordenadas polares son: (r: ${r.toFixed(2)}, θ: ${theta.toFixed(2)} radianes)`;
+        }
+    </script>
+</body>
+</html>
